@@ -14,7 +14,7 @@ services:
       - DB_PASSWORD=your_password
       - DB_NAME=your_dbname
       - KAFKA_BROKERS=kafka:9092
-
+    command: ["/root/main"]
   postgres:
     image: postgres:13
     environment:
@@ -39,6 +39,8 @@ services:
       KAFKA_CREATE_TOPICS: "messages:1:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - kafka_data:/kafka
 
 volumes:
   postgres_data:
+  kafka_data:
